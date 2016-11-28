@@ -14,7 +14,7 @@ import {
 declare var Chart:any;
 
 /* tslint:disable-next-line */
-@Directive({selector: 'canvas[baseChart]', exportAs: 'base-chart'})
+@Directive({selector: 'base-chart'})
 export class BaseChartDirective implements OnDestroy, OnChanges, OnInit {
   public static defaultColors:Array<number[]> = [
     [255, 99, 132],
