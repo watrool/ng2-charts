@@ -38,6 +38,8 @@ export class BaseChartDirective implements OnDestroy, OnChanges, OnInit {
   @Input() public chartType:string;
   @Input() public colors:Array<any>;
   @Input() public legend:boolean;
+  @Input() public height:string;
+  @Input() public width:string;
 
   @Output() public chartClick:EventEmitter<any> = new EventEmitter();
   @Output() public chartHover:EventEmitter<any> = new EventEmitter();
@@ -56,6 +58,15 @@ export class BaseChartDirective implements OnDestroy, OnChanges, OnInit {
   public ngOnInit():any {
     this.ctx = this.element.nativeElement.getContext('2d');
     this.cvs = this.element.nativeElement;
+    if (this.width) {
+      this.cvs.width = this.width;
+    }
+
+    if (this.height) {
+      this.cvs.height = this.height;
+    }
+
+    this.initFlag = true;
     this.initFlag = true;
     if (this.data || this.datasets) {
       this.refresh();
